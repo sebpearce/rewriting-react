@@ -1,20 +1,13 @@
-// Counter.js
-class Counter {
-  constructor(element, props) {
-    this.element = element
-    this.props = props
+import { createButton, createDiv, createText } from './CreateElement';
+import { Component } from './Component';
+
+export default class Counter extends Component {
+  constructor(container, props) {
+    super(container, props);
     this.state = {
       count: new Number(props.defaultCount)
     }
-    this.render()
-  }
-
-  setState(newState) {
-    this.state = {
-      ...this.state,
-      ...newState
-    }
-    this.render()
+    this.render();
   }
 
   increment() {
@@ -26,8 +19,8 @@ class Counter {
   }
 
   render() {
-    this.element.innerHTML = ''
-    this.element.appendChild(
+    this.container.innerHTML = ''
+    this.container.appendChild(
       createDiv({
         children: [
           createText(this.state.count),
@@ -44,21 +37,4 @@ class Counter {
     )
   }
 }
-
-const createElement = elementType => ({ onClick, children }) => {
-  const element = document.createElement(elementType)
-  if (onClick) {
-    element.addEventListener('click', onClick)
-  }
-  if (children) {
-    children.map(child => element.appendChild(child))
-  }
-  return element
-}
-
-const createButton = createElement('button')
-const createDiv = createElement('div')
-const createText = text => document.createTextNode(text)
-const counters = Array.from(document.querySelectorAll('[data-counter]'));
-counters.map(counter => new Counter(counter, JSON.parse(counter.dataset.counter)))
 

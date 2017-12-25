@@ -1,0 +1,13 @@
+{
+  "name": "rewriting-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sebpearce/rewriting-react.git",
+  "author": "sebpearce <sebpearce@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
